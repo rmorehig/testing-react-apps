@@ -14,16 +14,22 @@ test('counter increments and decrements when the buttons are clicked', () => {
   document.body.append(div)
   ReactDOM.render(<Counter />, div)
   const [decrement, increment] = div.querySelectorAll('button')
-  const event = new MouseEvent('click', {
+
+  const message = div.firstElementChild.querySelector('div')
+  expect(message.textContent).toBe('Current count: 0')
+  const incrementClickEvent = new MouseEvent('click', {
     bubbles: true,
     cancelable: true,
     button: 0,
   })
-  const message = div.firstElementChild.querySelector('div')
-  expect(message.textContent).toBe('Current count: 0')
-  increment.dispatchEvent(event)
+  increment.dispatchEvent(incrementClickEvent)
   expect(message.textContent).toBe('Current count: 1')
-  decrement.dispatchEvent(event)
+  const decrementClickEvent = new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  })
+  decrement.dispatchEvent(decrementClickEvent)
   expect(message.textContent).toBe('Current count: 0')
 })
 
