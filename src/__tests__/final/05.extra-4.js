@@ -53,7 +53,7 @@ test('omitting the password results in an error', async () => {
 })
 
 test('unknown server error displays the error message', async () => {
-  const testErrorMessage = 'Oh no, something bad happened'
+  const testErrorMessage = 'Oops, something bad happened!!'
   server.use(
     rest.post(
       'https://auth-provider.example.com/api/login',
